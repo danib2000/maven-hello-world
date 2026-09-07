@@ -122,14 +122,25 @@ httpRoute:
   #       value: v2
 
 # This is to setup the liveness and readiness probes more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
-livenessProbe:
-  httpGet:
-    path: /
-    port: http
-readinessProbe:
-  httpGet:
-    path: /
-    port: http
+# This is to setup the liveness and readiness probes more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
+# Liveness Probe: Verifies the Java process is alive inside the container
+  livenessProbe:
+    exec:
+      command:
+        - pgrep
+        - java
+    initialDelaySeconds: 10
+    periodSeconds: 10
+
+  # Readiness Probe: Verifies the Java process is active
+  readinessProbe:
+    exec:
+      command:
+        - pgrep
+        - java
+    initialDelaySeconds: 5
+    periodSeconds: 5
+
 
 # This section is for setting up autoscaling more information can be found here: https://kubernetes.io/docs/concepts/workloads/autoscaling/
 autoscaling:
