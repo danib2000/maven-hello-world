@@ -36,7 +36,7 @@ jobs:
 
       # Compile and Package artifact into JAR
       - name: Compile and Package Artifact
-        run: mvn clean package -DskipTests
+        run: cd myapp && mvn clean package -DskipTests
 
       # Step D: Upload build artifact to GitHub Actions artifacts
       - name: Create Artifact Item for the Build
