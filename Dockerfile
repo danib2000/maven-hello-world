@@ -11,8 +11,6 @@ RUN mvn dependency:go-offline -B
 COPY myapp/src ./src
 RUN mvn clean package -DskipTests
 
-RUN mvn clean package 
-
 ## Stage Prod 
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
