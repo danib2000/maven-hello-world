@@ -62,4 +62,7 @@ jobs:
           
           echo "Starting container..."
           docker run -d --name my-app-test -p 8080:8080 $IMAGE
+          # sleep for docker to start up
+          sleep 5
+          
           docker logs my-app-test
