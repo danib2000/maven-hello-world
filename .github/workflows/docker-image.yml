@@ -62,7 +62,4 @@ jobs:
           
           echo "Starting container..."
           docker run --name my-app-test -p 8080:8080 $IMAGE
-          
-          else
-            echo "SUCCESS: Container is running as non-root user (UID: $USER_ID)."
-          fi
+        
