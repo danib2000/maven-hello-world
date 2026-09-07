@@ -24,6 +24,7 @@ jobs:
       - name: Bump Patch Version
         id: bump_version
         run: |
+          cd myapp
           mvn build-helper:parse-version versions:set \
             -DnewVersion=\${parsedVersion.majorVersion}.\${parsedVersion.minorVersion}.\${parsedVersion.nextIncrementalVersion} \
             versions:commit
