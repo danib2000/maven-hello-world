@@ -46,7 +46,7 @@ kubectl logs -f deployment/my-app
 # Verify readiness and liveness exec probes
 kubectl describe pods -l app.kubernetes.io/name=my-app
 ```
-
+Docker image can be found [Here](https://hub.docker.com/repository/docker/danib2000/my-app/general)
 --- 
 ## 🛠 Project Structure
 
