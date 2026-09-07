@@ -34,25 +34,14 @@ jobs:
           echo "VERSION=${JAR_VERSION}" >> $GITHUB_OUTPUT
           echo "Updated project version to: ${JAR_VERSION}"
 
-      # Compile and Package artifact into JAR
-      - name: Compile and Package Artifact
-        run: cd myapp && mvn clean package -DskipTests
-
-      # Step D: Upload build artifact to GitHub Actions artifacts
-      - name: Create Artifact Item for the Build
-        uses: actions/upload-artifact@v4
-        with:
-          name: java-app-v${{ steps.bump_version.outputs.VERSION }}
-          path: target/*.jar
-
       # Log in to Docker Hub
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
 
-      # Step E & F: Build and Push Docker image tagged automatically with Jar version
+      # Build and Push Docker image tagged automatically with Jar version
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v5
         with:
@@ -63,7 +52,7 @@ jobs:
             ${{ secrets.USERNAME }}/my-app:${{ steps.bump_version.outputs.VERSION }}
             ${{ secrets.USERNAME }}/my-app:latest
 
-      # Step G: Download and Run Docker image on the runner
+      # Download and Run Docker image on the runner
       - name: Run Docker Image
         run: |
           IMAGE="${{ secrets.USERNAME }}/my-app:${{ steps.bump_version.outputs.VERSION }}"
