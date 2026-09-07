@@ -13,18 +13,16 @@ This project demonstrates a complete CI/CD and containerization workflow for a J
 * **Multi-Stage Dockerfile:** Produces a minimal JRE container running under a non-root user for enhanced security.
 * **Automated CI/CD:** GitHub Actions pipeline compiles, tests, packages, tags, and pushes Docker images to Docker Hub.
 * **Helm Chart Deployment:** Deploys the application to Kubernetes using `exec`-based readiness and liveness probes suitable for background processes.
-
+* **Tested on minikube:** This project was tested on a minikube cluster
 ---
 
-## 📸 Architecture & Pipeline Diagrams
+## 📸 Architecture & Pipeline 
 
-### CI/CD Pipeline Workflow
-<!-- Replace the path below with your pipeline screenshot -->
-![CI/CD Pipeline Diagram](./images/pipeline.png)
+### CI/CD Pipeline 
+![CI/CD Pipeline ](./images/cicd.png)
 
 ### Kubernetes Workload Deployment
-<!-- Replace the path below with your Kubernetes architecture screenshot -->
-![Kubernetes Architecture Diagram](./images/k8s-architecture.png)
+![Kubernetes Architecture Diagram](./images/minikube.png)
 
 ---
 
