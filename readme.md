@@ -16,7 +16,7 @@ This project demonstrates a complete CI/CD and containerization workflow for a J
 * **Tested on minikube:** This project was tested on a minikube cluster
 ---
 
-## 📸 Architecture & Pipeline 
+## 📸 Pipeline & Deployment 
 
 ### CI/CD Pipeline 
 ![CI/CD Pipeline ](./images/cicd.png)
@@ -25,7 +25,29 @@ This project demonstrates a complete CI/CD and containerization workflow for a J
 ![Kubernetes Architecture Diagram](./images/minikube.png)
 
 ---
+## How To Test
+Start minikube cluster
+```bash
+  minikube start
+```
+Install with `helm`
+```bash
+helm upgrade --install my-app .   --set image.tag=1.0.2   --namespace default
+```
 
+Verify deployment
+```bash
+# Verify pod status
+kubectl get pods -l app.kubernetes.io/name=my-app
+
+# Check application output logs
+kubectl logs -f deployment/my-app
+
+# Verify readiness and liveness exec probes
+kubectl describe pods -l app.kubernetes.io/name=my-app
+```
+
+--- 
 ## 🛠 Project Structure
 
 ```text
