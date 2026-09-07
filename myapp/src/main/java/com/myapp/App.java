@@ -11,6 +11,12 @@ public class App
         System.out.println( "Hello World! From Dani B" );
 
 	// Keep the application process running 
-	Thread.currentThread().join(); 
+	try {
+            // Block the thread to keep the application running
+            Thread.currentThread().join();
+        } catch (InterruptedException e) {
+            System.err.println("Application thread interrupted: " + e.getMessage());
+            Thread.currentThread().interrupt();
+        }
     }
 }
